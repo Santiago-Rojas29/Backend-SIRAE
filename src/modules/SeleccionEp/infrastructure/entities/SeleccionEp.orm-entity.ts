@@ -1,4 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
+import { MatriculaOrmEntity } from 'src/modules/Matricula/infrastructure/entities/Matricula.orm-entity';
+import { AlternativaepOrmEntity } from 'src/modules/Alternativaep/infrastructure/entities/Alternativaep.orm-entity';
 
 @Entity('SeleccionEp')
 export class SeleccionEpOrmEntity {
@@ -8,11 +10,23 @@ export class SeleccionEpOrmEntity {
   @Column('uuid')
   matricula_id_FK!: string;
 
+  @ManyToOne(()=>MatriculaOrmEntity,{onDelete:'RESTRICT'})
+  @JoinColumn({name:'matricula_id_FK'})
+  matricula?:MatriculaOrmEntity
+
   @Column('uuid')
   alternativa_id_FK!: string;
 
-  @Column('uuid')
-  alternativa_original_id_FK!: string;
+  @ManyToOne(()=>AlternativaepOrmEntity,{onDelete:'RESTRICT'})
+  @JoinColumn({name:'alternativa_id_FK'})
+  alternativa?:AlternativaepOrmEntity
+
+  @Column({ type: 'uuid', nullable: true })
+  alternativa_original_id_FK!: string | null;
+
+  @ManyToOne(()=>AlternativaepOrmEntity,{onDelete:'SET NULL'})
+  @JoinColumn({name:'alternativa_original_id_FK'})
+  alternativa_original?:AlternativaepOrmEntity | null
 
   @Column({ type: 'varchar', length: 30 })
   estado_proceso!: string;

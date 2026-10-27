@@ -1,3 +1,5 @@
+import { BadRequestException } from '@nestjs/common';
+
 export class Permiso {
   constructor(
     public readonly id_permiso: string,
@@ -9,7 +11,7 @@ export class Permiso {
   ) {}
 
   validar(): void {
-    if (!this.modulo) throw new Error('El modulo es obligatorio');
-    if (!this.accion) throw new Error('La accion es obligatoria');
+    if (!this.modulo) throw new BadRequestException('El modulo es obligatorio');
+    if (!this.accion) throw new BadRequestException('La accion es obligatoria');
   }
 }

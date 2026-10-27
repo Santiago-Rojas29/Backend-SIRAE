@@ -1,5 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
 import { OrigenFicha } from '../../domain/entities/Ficha.entity';
+import { CentroOrmEntity } from 'src/modules/Centro/infrastructure/entities/Centro.orm-entity';
+import { ProgramaOrmEntity } from 'src/modules/Programa/infrastructure/entities/Programa.orm-entity';
 
 @Entity('Ficha')
 export class FichaOrmEntity {
@@ -9,8 +11,16 @@ export class FichaOrmEntity {
   @Column('uuid')
   centro_id_FK!: string;
 
+  @ManyToOne(()=>CentroOrmEntity,{onDelete:'RESTRICT'})
+  @JoinColumn({name:'centro_id_FK'})
+  centro?:CentroOrmEntity
+
   @Column('uuid')
   programa_id_FK!: string;
+
+  @ManyToOne(()=>ProgramaOrmEntity,{onDelete:'RESTRICT'})
+  @JoinColumn({name:'programa_id_FK'})
+  programa?:ProgramaOrmEntity
 
   @Column({ type: 'varchar', length: 20, unique: true })
   numero!: string;

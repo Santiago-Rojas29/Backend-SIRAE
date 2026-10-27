@@ -11,6 +11,7 @@ export class CrearRegionalUseCase {
 
   async execute(data: { nombre: string; codigo:string }): Promise<Regional> {
     const entity = new Regional('',  data.nombre, data.codigo,);
+    entity.validar();
     return this.repo.crear(entity);
   }
 }

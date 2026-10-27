@@ -1,3 +1,5 @@
+import { BadRequestException } from '@nestjs/common';
+
 export class EtapaProductiva {
   constructor(
     public readonly id_etapaproductiva: string,
@@ -16,12 +18,12 @@ export class EtapaProductiva {
   ) {}
 
   validar(): void {
-    if (!this.seleccion_ep_id_FK) throw new Error('La seleccion de etapa productiva es obligatoria');
-    if (!this.fecha_inicio) throw new Error('La fecha de inicio es obligatoria');
-    if (!this.fecha_fin) throw new Error('La fecha de fin es obligatoria');
-    if (!this.estado) throw new Error('El estado es obligatorio');
-    if (!this.ente_cooformador) throw new Error('El ente cooformador es obligatorio');
-    if (!this.coordinador_academico) throw new Error('El coordinador academico es obligatorio');
-    if (!this.instructor_seguimiento) throw new Error('El instructor de seguimiento es obligatorio');
+    if (!this.seleccion_ep_id_FK) throw new BadRequestException('La seleccion de etapa productiva es obligatoria');
+    if (!this.fecha_inicio) throw new BadRequestException('La fecha de inicio es obligatoria');
+    if (!this.fecha_fin) throw new BadRequestException('La fecha de fin es obligatoria');
+    if (!this.estado) throw new BadRequestException('El estado es obligatorio');
+    if (!this.ente_cooformador) throw new BadRequestException('El ente cooformador es obligatorio');
+    if (!this.coordinador_academico) throw new BadRequestException('El coordinador academico es obligatorio');
+    if (!this.instructor_seguimiento) throw new BadRequestException('El instructor de seguimiento es obligatorio');
   }
 }

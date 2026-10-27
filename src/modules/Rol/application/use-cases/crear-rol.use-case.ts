@@ -11,6 +11,7 @@ export class CrearRolUseCase {
 
   async execute(data: { nombre: string; descripcion: string }): Promise<Rol> {
     const entity = new Rol('', data.nombre, data.descripcion);
+    entity.validar();
     return this.repo.crear(entity);
   }
 }

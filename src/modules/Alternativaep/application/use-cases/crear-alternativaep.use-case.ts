@@ -11,6 +11,7 @@ export class CrearAlternativaepUseCase {
 
   async execute(data: {categoria_id_FK:string,nombre: string; texto_sofia: string }): Promise<Alternativaep> {
     const entity = new Alternativaep('',data.categoria_id_FK,data.nombre, data.texto_sofia);
+    entity.validar();
     return this.repo.crear(entity);
   }
 }

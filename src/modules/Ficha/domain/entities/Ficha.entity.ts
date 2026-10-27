@@ -1,3 +1,5 @@
+import { BadRequestException } from '@nestjs/common';
+
 export enum OrigenFicha {
   DF49 = 'df49',
   P04 = 'p04',
@@ -24,9 +26,9 @@ export class Ficha {
   ) {}
 
   validar(): void {
-    if (!this.numero) throw new Error('El numero es obligatorio');
-    if (!this.centro_id_FK) throw new Error('El centro es obligatorio');
-    if (!this.programa_id_FK) throw new Error('El programa es obligatorio');
-    if (!Object.values(OrigenFicha).includes(this.origen)) throw new Error('El origen no es valido');
+    if (!this.numero) throw new BadRequestException('El numero es obligatorio');
+    if (!this.centro_id_FK) throw new BadRequestException('El centro es obligatorio');
+    if (!this.programa_id_FK) throw new BadRequestException('El programa es obligatorio');
+    if (!Object.values(OrigenFicha).includes(this.origen)) throw new BadRequestException('El origen no es valido');
   }
 }

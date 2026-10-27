@@ -64,6 +64,7 @@ export class SeleccionEpTypeOrmRepository implements SeleccionEpRepository {
   async actualizar(id: string, data: Partial<SeleccionEp>): Promise<SeleccionEp> {
     await this.repo.update(id, {
       ...(data.estado_proceso && { estado_proceso: data.estado_proceso }),
+      ...(data.alternativa_original_id_FK !== undefined && { alternativa_original_id_FK: data.alternativa_original_id_FK }),
       ...(data.fecha_respuesta && { fecha_respuesta: data.fecha_respuesta }),
       ...(data.verificacion_ficha && { verificacion_ficha: data.verificacion_ficha }),
       ...(data.resultado_verificacion_sgva && { resultado_verificacion_sgva: data.resultado_verificacion_sgva }),

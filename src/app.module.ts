@@ -26,6 +26,12 @@ import { EmpresaModule } from './modules/Empresa/Empresa.module';
 import { AlternativaepModule } from './modules/Alternativaep/Alternativaep.module';
 import { EtapaProductivaModule } from './modules/EtapaProductiva/EtapaProductiva.module';
 import { ContratoAprendizajeModule } from './modules/ContratoAprendizaje/ContratoAprendizaje.module';
+import { CredencialesModule } from './modules/Credenciales/Credenciales.module';
+import { TipocredencialModule } from './modules/Tipocredencial/Tipocredencial.module';
+import { JobEjecutionModule } from './modules/JobEjecution/JobEjecution.module';
+import { ArchivoProcesadoModule } from './modules/ArchivoProcesado/ArchivoProcesado.module';
+import { JobDetalleModule } from './modules/JobDetalle/JobDetalle.module';
+import { AuthModule } from './modules/Auth/Auth.module';
 
 
 
@@ -43,7 +49,7 @@ import { ContratoAprendizajeModule } from './modules/ContratoAprendizaje/Contrat
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
       autoLoadEntities:true,
-      synchronize:true
+      synchronize:false
     }),
     RegionalModule,
     CentroModule,
@@ -68,6 +74,12 @@ import { ContratoAprendizajeModule } from './modules/ContratoAprendizaje/Contrat
     AlternativaepModule,
     EtapaProductivaModule,
     ContratoAprendizajeModule,
+    CredencialesModule,
+    TipocredencialModule,
+    JobEjecutionModule,
+    ArchivoProcesadoModule,
+    JobDetalleModule,
+    AuthModule,
 
   ],
   controllers: [],

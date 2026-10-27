@@ -1,3 +1,5 @@
+import { BadRequestException } from '@nestjs/common';
+
 export class Matricula {
   constructor(
     public readonly id_matricula: string,
@@ -13,8 +15,8 @@ export class Matricula {
   ) {}
 
   validar(): void {
-    if (!this.aprendiz_id_FK) throw new Error('El aprendiz es obligatorio');
-    if (!this.ficha_id_FK) throw new Error('La ficha es obligatoria');
-    if (!this.estado) throw new Error('El estado es obligatorio');
+    if (!this.aprendiz_id_FK) throw new BadRequestException('El aprendiz es obligatorio');
+    if (!this.ficha_id_FK) throw new BadRequestException('La ficha es obligatoria');
+    if (!this.estado) throw new BadRequestException('El estado es obligatorio');
   }
 }

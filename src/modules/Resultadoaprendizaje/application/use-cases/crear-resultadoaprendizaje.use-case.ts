@@ -11,6 +11,7 @@ export class CrearResultadoaprendizajeUseCase {
 
   async execute(data: {competencia_id_FK:string,nombre: string; codigo: string }): Promise<Resultadoaprendizaje> {
     const entity = new Resultadoaprendizaje('',data.competencia_id_FK,data.nombre, data.codigo);
+    entity.validar();
     return this.repo.crear(entity);
   }
 }

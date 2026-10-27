@@ -13,6 +13,7 @@ export class actualizarSeleccionEpUseCase {
     id: string,
     data: {
       estado_proceso?: string;
+      alternativa_original_id_FK?: string;
       fecha_respuesta?: Date;
       verificacion_ficha?: string;
       resultado_verificacion_sgva?: string;
@@ -25,6 +26,7 @@ export class actualizarSeleccionEpUseCase {
   ): Promise<SeleccionEp> {
     const mapped: Partial<SeleccionEp> = {
       ...(data.estado_proceso && { estado_proceso: data.estado_proceso }),
+      ...(data.alternativa_original_id_FK && { alternativa_original_id_FK: data.alternativa_original_id_FK }),
       ...(data.fecha_respuesta && { fecha_respuesta: data.fecha_respuesta }),
       ...(data.verificacion_ficha && { verificacion_ficha: data.verificacion_ficha }),
       ...(data.resultado_verificacion_sgva && { resultado_verificacion_sgva: data.resultado_verificacion_sgva }),

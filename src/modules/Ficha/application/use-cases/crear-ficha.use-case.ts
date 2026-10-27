@@ -36,6 +36,7 @@ export class CrearFichaUseCase {
       data.programa_especial,
       data.duracion_productiva_meses,
     );
+    entity.validar();
     return this.repo.crear(entity);
   }
 }

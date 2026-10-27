@@ -1,6 +1,8 @@
 
 
 
+import { BadRequestException } from '@nestjs/common';
+
 export enum EstadoUsuario{
   Activo='activo',
   Inactivo='inactivo'
@@ -36,14 +38,14 @@ export class Usuario {
   ) {}
 
   validar(): void {
-    if(!this.nombre) throw new Error('El nombre es obligatorio');
-    if(!Object.values(TipoDocumento).includes(this.tipo_documento)) throw new Error('Tipo de documento no es valido');
-    if(!this.centro_id_FK) throw new Error('El centro es obligatorio');
-    if(!this.correo) throw new Error('El correo es obligatorio');
-    if(!this.password) throw new Error('La contraseña es obligatoria');
-    if(!Object.values(TipoUsuario).includes(this.tipo_usuario)) throw new Error('El tipo de usuario no es valido');
-    if(!Object.values(EstadoUsuario).includes(this.estado_usuario)) throw new Error('El estado del usaurio es invalido');
-    if(!this.numero_documento) throw new Error('El numero de documento es obligatorio');
-    if(!Object.values(TipoDocumento).includes(this.tipo_documento)) throw new Error('El tipo de documento no es valido')
+    if(!this.nombre) throw new BadRequestException('El nombre es obligatorio');
+    if(!Object.values(TipoDocumento).includes(this.tipo_documento)) throw new BadRequestException('Tipo de documento no es valido');
+    if(!this.centro_id_FK) throw new BadRequestException('El centro es obligatorio');
+    if(!this.correo) throw new BadRequestException('El correo es obligatorio');
+    if(!this.password) throw new BadRequestException('La contraseña es obligatoria');
+    if(!Object.values(TipoUsuario).includes(this.tipo_usuario)) throw new BadRequestException('El tipo de usuario no es valido');
+    if(!Object.values(EstadoUsuario).includes(this.estado_usuario)) throw new BadRequestException('El estado del usaurio es invalido');
+    if(!this.numero_documento) throw new BadRequestException('El numero de documento es obligatorio');
+    if(!Object.values(TipoDocumento).includes(this.tipo_documento)) throw new BadRequestException('El tipo de documento no es valido')
   }
 }

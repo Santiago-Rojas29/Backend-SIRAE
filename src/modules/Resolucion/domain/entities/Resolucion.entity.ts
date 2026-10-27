@@ -1,3 +1,5 @@
+import { BadRequestException } from '@nestjs/common';
+
 export class Resolucion {
   constructor(
     public readonly id_resolucion: string,
@@ -11,8 +13,8 @@ export class Resolucion {
   ) {}
 
   validar(): void {
-    if (!this.numero) throw new Error('El numero es obligatorio');
-    if (!this.anio) throw new Error('El anio es obligatorio');
-    if (!this.fecha) throw new Error('La fecha es obligatoria');
+    if (!this.numero) throw new BadRequestException('El numero es obligatorio');
+    if (!this.anio) throw new BadRequestException('El anio es obligatorio');
+    if (!this.fecha) throw new BadRequestException('La fecha es obligatoria');
   }
 }

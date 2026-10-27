@@ -7,7 +7,7 @@ import { CrearCentroUseCase } from './application/use-cases/crear-centro.use-cas
 import { actualizarCentroUseCase } from './application/use-cases/actualizar-centro.use-case';
 import { eliminarCentroUseCase } from './application/use-cases/eliminar-centro.use-case';
 import { obtenerPorIdCentroUseCase } from './application/use-cases/obtener-por-id.use-case';
-import { obtenerRegionalTodoslUseCase } from '../Regional/application/use-cases/obtener-todos.use-case';
+import { ObtenerTodosCentroUseCase } from './application/use-cases/obtener-todos.use-case';
 
 @Module({
   imports: [TypeOrmModule.forFeature([CentroOrmEntity])],
@@ -17,7 +17,7 @@ import { obtenerRegionalTodoslUseCase } from '../Regional/application/use-cases/
     actualizarCentroUseCase,
     eliminarCentroUseCase,
     obtenerPorIdCentroUseCase,
-    obtenerRegionalTodoslUseCase,
+    ObtenerTodosCentroUseCase,
     { provide: 'CentroRepository', useClass: CentroTypeOrmRepository },
   ],
 })

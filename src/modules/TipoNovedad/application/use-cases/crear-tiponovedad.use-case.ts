@@ -11,6 +11,7 @@ export class CrearTipoNovedadUseCase {
 
   async execute(data: { codigo: string; nombre: string; descripcion: string }): Promise<TipoNovedad> {
     const entity = new TipoNovedad('', data.codigo, data.nombre, data.descripcion);
+    entity.validar();
     return this.repo.crear(entity);
   }
 }

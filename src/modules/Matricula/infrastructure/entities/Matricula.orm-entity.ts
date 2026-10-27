@@ -1,4 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, Unique } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, Unique, ManyToOne, JoinColumn } from 'typeorm';
+import { AprendizOrmEntity } from 'src/modules/Aprendiz/infrastructure/entities/Aprendiz.orm-entity';
+import { FichaOrmEntity } from 'src/modules/Ficha/infrastructure/entities/Ficha.orm-entity';
 
 @Entity('Matricula')
 @Unique(['aprendiz_id_FK', 'ficha_id_FK'])
@@ -9,8 +11,16 @@ export class MatriculaOrmEntity {
   @Column('uuid')
   aprendiz_id_FK!: string;
 
+  @ManyToOne(()=>AprendizOrmEntity,{onDelete:'RESTRICT'})
+  @JoinColumn({name:'aprendiz_id_FK'})
+  aprendiz?:AprendizOrmEntity
+
   @Column('uuid')
   ficha_id_FK!: string;
+
+  @ManyToOne(()=>FichaOrmEntity,{onDelete:'RESTRICT'})
+  @JoinColumn({name:'ficha_id_FK'})
+  ficha?:FichaOrmEntity
 
   @Column({ type: 'varchar', length: 50 })
   estado!: string;

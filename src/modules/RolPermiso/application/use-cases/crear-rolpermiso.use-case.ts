@@ -11,6 +11,7 @@ export class CrearRolPermisoUseCase {
 
   async execute(data: { rol_id_FK: string; permiso_id_FK: string }): Promise<RolPermiso> {
     const entity = new RolPermiso('', data.rol_id_FK, data.permiso_id_FK);
+    entity.validar();
     return this.repo.crear(entity);
   }
 }

@@ -34,6 +34,7 @@ export class CrearEtapaProductivaUseCase {
       data.fecha_registro_sofia,
       data.observaciones,
     );
+    entity.validar();
     return this.repo.crear(entity);
   }
 }

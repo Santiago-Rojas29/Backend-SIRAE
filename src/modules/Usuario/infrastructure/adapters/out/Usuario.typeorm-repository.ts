@@ -59,6 +59,11 @@ export class UsuarioTypeOrmRepository implements UsuarioRepository {
 
   }
 
+  async obtenerPorCorreo(correo: string): Promise<Usuario | null> {
+    const usu = await this.repo.findOneBy({ correo });
+    return usu ? this.toEntity(usu) : null;
+  }
+
   async actualizar(id: string, data: Partial<Usuario>): Promise<Usuario> {
     await this.repo.update(id,data as any);
     const usu= await this.repo.findOneBy({id_usuario:id});

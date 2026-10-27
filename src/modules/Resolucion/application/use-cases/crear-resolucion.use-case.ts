@@ -17,6 +17,7 @@ export class CrearResolucionUseCase {
     observaciones?: string;
   }): Promise<Resolucion> {
     const entity = new Resolucion('', data.numero, data.anio, data.fecha, data.tipo, data.observaciones);
+    entity.validar();
     return this.repo.crear(entity);
   }
 }

@@ -1,3 +1,5 @@
+import { BadRequestException } from '@nestjs/common';
+
 export class ContratoAprendizaje {
   constructor(
     public readonly id_contratoaprendizaje: string,
@@ -18,15 +20,15 @@ export class ContratoAprendizaje {
   ) {}
 
   validar(): void {
-    if (!this.etapa_productiva_id_FK) throw new Error('La etapa productiva es obligatoria');
-    if (!this.empresa_id_FK) throw new Error('La empresa es obligatoria');
-    if (!this.numero_contrato) throw new Error('El numero de contrato es obligatorio');
-    if (!this.fecha_inicio) throw new Error('La fecha de inicio es obligatoria');
-    if (!this.fecha_fin) throw new Error('La fecha de fin es obligatoria');
-    if (!this.estado) throw new Error('El estado es obligatorio');
-    if (!this.nit_eps) throw new Error('El nit de la EPS es obligatorio');
-    if (!this.nombre_eps) throw new Error('El nombre de la EPS es obligatorio');
-    if (!this.nit_arl) throw new Error('El nit de la ARL es obligatorio');
-    if (!this.nombre_arl) throw new Error('El nombre de la ARL es obligatorio');
+    if (!this.etapa_productiva_id_FK) throw new BadRequestException('La etapa productiva es obligatoria');
+    if (!this.empresa_id_FK) throw new BadRequestException('La empresa es obligatoria');
+    if (!this.numero_contrato) throw new BadRequestException('El numero de contrato es obligatorio');
+    if (!this.fecha_inicio) throw new BadRequestException('La fecha de inicio es obligatoria');
+    if (!this.fecha_fin) throw new BadRequestException('La fecha de fin es obligatoria');
+    if (!this.estado) throw new BadRequestException('El estado es obligatorio');
+    if (!this.nit_eps) throw new BadRequestException('El nit de la EPS es obligatorio');
+    if (!this.nombre_eps) throw new BadRequestException('El nombre de la EPS es obligatorio');
+    if (!this.nit_arl) throw new BadRequestException('El nit de la ARL es obligatorio');
+    if (!this.nombre_arl) throw new BadRequestException('El nombre de la ARL es obligatorio');
   }
 }

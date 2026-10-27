@@ -11,6 +11,7 @@ export class CrearCategoriaEpUseCase {
 
   async execute(data: { nombre: string; nombre_sofia: string }): Promise<CategoriaEp> {
     const entity = new CategoriaEp('', data.nombre, data.nombre_sofia);
+    entity.validar();
     return this.repo.crear(entity);
   }
 }

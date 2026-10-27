@@ -28,6 +28,7 @@ export class CrearMatriculaUseCase {
       data.cantidad_contratos_sgva,
       data.fecha_actualizacion_sgva,
     );
+    entity.validar();
     return this.repo.crear(entity);
   }
 }

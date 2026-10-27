@@ -16,6 +16,7 @@ export class CrearProgramaUseCase {
     nivel_formacion: string;
   }): Promise<Programa> {
     const entity = new Programa('', data.codigo, data.version, data.nombre, data.nivel_formacion);
+    entity.validar();
     return this.repo.crear(entity);
   }
 }
