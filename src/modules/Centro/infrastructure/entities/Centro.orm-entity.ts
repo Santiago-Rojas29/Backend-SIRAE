@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { RegionalOrmEntity } from 'src/modules/Regional/infrastructure/entities/Regional.orm-entity';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
 
 @Entity('Centro')
 export class CentroOrmEntity {
@@ -7,6 +8,10 @@ export class CentroOrmEntity {
 
   @Column('uuid')
   regional_id_FK!:string
+
+  @ManyToOne(()=>RegionalOrmEntity,{onDelete:'RESTRICT'})
+  @JoinColumn({name:'regional_id_FK'})
+  regional?:RegionalOrmEntity
 
   @Column({ length: 100 })
   nombre!: string;

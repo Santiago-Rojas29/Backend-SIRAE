@@ -11,6 +11,7 @@ export class crearEmpresaUseCase {
 
   async execute(data: { nit: string; razon_social: string; direccion:string; telefono:string; correo: string; ciudad:string; departamento: string }): Promise<Empresa> {
     const entity = new Empresa('',data.nit, data.razon_social,data.direccion,data.telefono,data.correo,data.ciudad,data.departamento);
+    entity.validar();
     return this.repo.crear(entity);
   }
 }

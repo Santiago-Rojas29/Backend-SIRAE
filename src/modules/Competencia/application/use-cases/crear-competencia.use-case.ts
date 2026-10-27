@@ -11,6 +11,7 @@ export class CrearCompetenciaUseCase {
 
   async execute(data: { programa_id_FK: string; codigo: string; nombre: string; es_etapa_productiva: boolean }): Promise<Competencia> {
     const entity = new Competencia('', data.programa_id_FK, data.codigo, data.nombre, data.es_etapa_productiva);
+    entity.validar();
     return this.repo.crear(entity);
   }
 }

@@ -11,6 +11,7 @@ export class CrearCentroUseCase {
 
   async execute(data: {regional_id_FK:string,nombre: string; codigo: string; direccion:string; municipio:string;departamento:string;telefono:string;correo:string }): Promise<Centro> {
     const entity = new Centro('',data.regional_id_FK, data.nombre, data.codigo, data.direccion, data.municipio, data.departamento, data.telefono, data.correo);
+    entity.validar();
     return this.repo.crear(entity);
   }
 }

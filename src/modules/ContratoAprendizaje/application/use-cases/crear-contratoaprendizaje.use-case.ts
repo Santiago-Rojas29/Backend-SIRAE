@@ -38,6 +38,7 @@ export class CrearContratoAprendizajeUseCase {
       data.contrato_cedido_a,
       data.fecha_registro_sgva,
     );
+    entity.validar();
     return this.repo.crear(entity);
   }
 }

@@ -1,11 +1,21 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsString, IsUUID, MaxLength } from 'class-validator';
 
 export class crearCredencialesDto {
-  @IsString()
+  @IsUUID()
   @IsNotEmpty()
-  nombre!: string;
+  centro_id_FK!: string;
+
+  @IsUUID()
+  @IsNotEmpty()
+  tipo_credenciales_id_FK!: string;
 
   @IsString()
   @IsNotEmpty()
-  codigo!: string;
+  @MaxLength(100)
+  usuario!: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @MaxLength(128)
+  contrasena!: string;
 }

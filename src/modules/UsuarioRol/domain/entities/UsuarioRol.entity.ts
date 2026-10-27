@@ -1,3 +1,5 @@
+import { BadRequestException } from '@nestjs/common';
+
 export class UsuarioRol {
   constructor(
     public readonly id_usuariorol: string,
@@ -7,7 +9,7 @@ export class UsuarioRol {
   ) {}
 
   validar(): void {
-    if (!this.usuario_id_FK) throw new Error('El usuario es obligatorio');
-    if (!this.rol_id_FK) throw new Error('El rol es obligatorio');
+    if (!this.usuario_id_FK) throw new BadRequestException('El usuario es obligatorio');
+    if (!this.rol_id_FK) throw new BadRequestException('El rol es obligatorio');
   }
 }

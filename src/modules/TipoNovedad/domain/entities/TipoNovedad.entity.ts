@@ -1,3 +1,5 @@
+import { BadRequestException } from '@nestjs/common';
+
 export class TipoNovedad {
   constructor(
     public readonly id_tiponovedad: string,
@@ -9,8 +11,8 @@ export class TipoNovedad {
   ) {}
 
   validar(): void {
-    if (!this.codigo) throw new Error('El codigo es obligatorio');
-    if (!this.nombre) throw new Error('El nombre es obligatorio');
-    if (!this.descripcion) throw new Error('La descripcion es obligatoria');
+    if (!this.codigo) throw new BadRequestException('El codigo es obligatorio');
+    if (!this.nombre) throw new BadRequestException('El nombre es obligatorio');
+    if (!this.descripcion) throw new BadRequestException('La descripcion es obligatoria');
   }
 }

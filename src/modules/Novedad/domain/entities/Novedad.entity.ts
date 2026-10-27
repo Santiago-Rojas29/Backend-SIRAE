@@ -1,3 +1,5 @@
+import { BadRequestException } from '@nestjs/common';
+
 export enum EstadoRegistroNovedad {
   Pendiente = 'pendiente',
   Registrada = 'registrada',
@@ -23,11 +25,11 @@ export class Novedad {
   ) {}
 
   validar(): void {
-    if (!this.matricula_id_FK) throw new Error('La matricula es obligatoria');
-    if (!this.tipo_novedad_id_FK) throw new Error('El tipo de novedad es obligatorio');
-    if (!this.fecha_novedad) throw new Error('La fecha de la novedad es obligatoria');
+    if (!this.matricula_id_FK) throw new BadRequestException('La matricula es obligatoria');
+    if (!this.tipo_novedad_id_FK) throw new BadRequestException('El tipo de novedad es obligatorio');
+    if (!this.fecha_novedad) throw new BadRequestException('La fecha de la novedad es obligatoria');
     if (!Object.values(EstadoRegistroNovedad).includes(this.estado_registro)) {
-      throw new Error('El estado de registro no es valido');
+      throw new BadRequestException('El estado de registro no es valido');
     }
   }
 }

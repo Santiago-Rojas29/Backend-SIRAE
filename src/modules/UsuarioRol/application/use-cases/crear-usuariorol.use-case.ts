@@ -11,6 +11,7 @@ export class CrearUsuarioRolUseCase {
 
   async execute(data: { usuario_id_FK: string; rol_id_FK: string }): Promise<UsuarioRol> {
     const entity = new UsuarioRol('', data.usuario_id_FK, data.rol_id_FK);
+    entity.validar();
     return this.repo.crear(entity);
   }
 }

@@ -1,12 +1,17 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToOne, JoinColumn } from 'typeorm';
+import { SeleccionEpOrmEntity } from 'src/modules/SeleccionEp/infrastructure/entities/SeleccionEp.orm-entity';
 
 @Entity('EtapaProductiva')
 export class EtapaProductivaOrmEntity {
   @PrimaryGeneratedColumn('uuid')
   id_etapaproductiva!: string;
 
-  @Column('uuid')
+  @Column({ type: 'uuid', unique: true })
   seleccion_ep_id_FK!: string;
+
+  @OneToOne(()=>SeleccionEpOrmEntity,{onDelete:'RESTRICT'})
+  @JoinColumn({name:'seleccion_ep_id_FK'})
+  seleccion_ep?:SeleccionEpOrmEntity
 
   @Column({ type: 'date' })
   fecha_inicio!: Date;

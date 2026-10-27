@@ -11,6 +11,7 @@ export class CrearPermisoUseCase {
 
   async execute(data: { modulo: string; accion: string; descripcion: string }): Promise<Permiso> {
     const entity = new Permiso('', data.modulo, data.accion, data.descripcion);
+    entity.validar();
     return this.repo.crear(entity);
   }
 }

@@ -1,3 +1,5 @@
+import { BadRequestException } from '@nestjs/common';
+
 export class JuicioEvaluativo {
   constructor(
     public readonly id_juicioevaluativo: string,
@@ -11,10 +13,10 @@ export class JuicioEvaluativo {
   ) {}
 
   validar(): void {
-    if (!this.matricula_id_FK) throw new Error('La matricula es obligatoria');
-    if (!this.resultado_aprendizaje_id_FK) throw new Error('El resultado de aprendizaje es obligatorio');
-    if (!this.calificacion) throw new Error('La calificacion es obligatoria');
-    if (!this.fecha_hora) throw new Error('La fecha y hora es obligatoria');
-    if (!this.funcionario) throw new Error('El funcionario es obligatorio');
+    if (!this.matricula_id_FK) throw new BadRequestException('La matricula es obligatoria');
+    if (!this.resultado_aprendizaje_id_FK) throw new BadRequestException('El resultado de aprendizaje es obligatorio');
+    if (!this.calificacion) throw new BadRequestException('La calificacion es obligatoria');
+    if (!this.fecha_hora) throw new BadRequestException('La fecha y hora es obligatoria');
+    if (!this.funcionario) throw new BadRequestException('El funcionario es obligatorio');
   }
 }

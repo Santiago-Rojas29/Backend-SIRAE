@@ -24,6 +24,7 @@ export class CrearJuicioEvaluativoUseCase {
       data.fecha_hora,
       data.funcionario,
     );
+    entity.validar();
     return this.repo.crear(entity);
   }
 }

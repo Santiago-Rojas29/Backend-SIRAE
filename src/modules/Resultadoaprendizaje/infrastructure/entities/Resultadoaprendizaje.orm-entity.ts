@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { CompetenciaOrmEntity } from 'src/modules/Competencia/infrastructure/entities/Competencia.orm-entity';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
 
 @Entity('Resultadoaprendizaje')
 export class ResultadoaprendizajeOrmEntity {
@@ -7,6 +8,10 @@ export class ResultadoaprendizajeOrmEntity {
 
   @Column('uuid')
   competencia_id_FK!: string;
+
+  @ManyToOne(()=>CompetenciaOrmEntity,{onDelete:'RESTRICT'})
+  @JoinColumn({name:'competencia_id_FK'})
+  competencia?:CompetenciaOrmEntity
 
   @Column({ length: 100 })
   nombre!: string;

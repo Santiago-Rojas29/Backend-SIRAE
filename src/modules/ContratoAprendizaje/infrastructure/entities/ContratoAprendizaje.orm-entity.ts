@@ -1,4 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
+import { EtapaProductivaOrmEntity } from 'src/modules/EtapaProductiva/infrastructure/entities/EtapaProductiva.orm-entity';
+import { EmpresaOrmEntity } from 'src/modules/Empresa/infrastructure/entities/Empresa.orm-entity';
 
 @Entity('ContratoAprendizaje')
 export class ContratoAprendizajeOrmEntity {
@@ -8,8 +10,16 @@ export class ContratoAprendizajeOrmEntity {
   @Column('uuid')
   etapa_productiva_id_FK!: string;
 
+  @ManyToOne(()=>EtapaProductivaOrmEntity,{onDelete:'RESTRICT'})
+  @JoinColumn({name:'etapa_productiva_id_FK'})
+  etapa_productiva?:EtapaProductivaOrmEntity
+
   @Column('uuid')
   empresa_id_FK!: string;
+
+  @ManyToOne(()=>EmpresaOrmEntity,{onDelete:'RESTRICT'})
+  @JoinColumn({name:'empresa_id_FK'})
+  empresa?:EmpresaOrmEntity
 
   @Column({ type: 'varchar', length: 20 })
   numero_contrato!: string;

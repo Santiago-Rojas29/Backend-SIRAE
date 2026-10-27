@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { ProgramaOrmEntity } from 'src/modules/Programa/infrastructure/entities/Programa.orm-entity';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
 
 @Entity('Competencia')
 export class CompetenciaOrmEntity {
@@ -7,6 +8,10 @@ export class CompetenciaOrmEntity {
 
   @Column('uuid')
   programa_id_FK!: string;
+
+  @ManyToOne(()=>ProgramaOrmEntity,{onDelete:'RESTRICT'})
+  @JoinColumn({name:'programa_id_FK'})
+  programa?:ProgramaOrmEntity
 
   @Column({ type: 'varchar', length: 100 })
   codigo!: string;

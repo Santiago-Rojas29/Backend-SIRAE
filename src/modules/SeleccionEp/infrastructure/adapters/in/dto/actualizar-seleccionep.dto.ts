@@ -1,10 +1,14 @@
-import { IsDateString, IsOptional, IsString, MaxLength } from 'class-validator';
+import { IsDateString, IsOptional, IsString, IsUUID, MaxLength } from 'class-validator';
 
 export class actualizarSeleccionEpDto {
   @IsString()
   @MaxLength(30)
   @IsOptional()
   estado_proceso?: string;
+
+  @IsUUID()
+  @IsOptional()
+  alternativa_original_id_FK?: string;
 
   @IsDateString()
   @IsOptional()

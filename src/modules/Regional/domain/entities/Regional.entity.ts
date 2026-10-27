@@ -1,3 +1,5 @@
+import { BadRequestException } from '@nestjs/common';
+
 export class Regional {
   constructor(
     public readonly id_regional: string,
@@ -8,7 +10,7 @@ export class Regional {
   ) {}
 
   validar():void{
-    if(!this.nombre) throw new Error('El nombre es obligatorio');
-    if(!this.codigo) throw new Error('El codigo es obligatorio')
+    if(!this.nombre) throw new BadRequestException('El nombre es obligatorio');
+    if(!this.codigo) throw new BadRequestException('El codigo es obligatorio')
   }
 }

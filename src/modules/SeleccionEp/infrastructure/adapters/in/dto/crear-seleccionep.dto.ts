@@ -10,8 +10,8 @@ export class crearSeleccionEpDto {
   alternativa_id_FK!: string;
 
   @IsUUID()
-  @IsNotEmpty()
-  alternativa_original_id_FK!: string;
+  @IsOptional()
+  alternativa_original_id_FK?: string;
 
   @IsString()
   @IsNotEmpty()

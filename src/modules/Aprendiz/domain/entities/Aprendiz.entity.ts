@@ -1,3 +1,5 @@
+import { BadRequestException } from '@nestjs/common';
+
 export enum TipoDocumento {
   CC = 'cc',
   TI = 'ti',
@@ -30,9 +32,9 @@ export class Aprendiz {
   ) {}
 
   validar(): void {
-    if (!Object.values(TipoDocumento).includes(this.tipo_documento)) throw new Error('El tipo de documento no es valido');
-    if (!this.numero_documento) throw new Error('El numero de documento es obligatorio');
-    if (!this.nombre) throw new Error('El nombre es obligatorio');
-    if (!this.apellidos) throw new Error('Los apellidos son obligatorios');
+    if (!Object.values(TipoDocumento).includes(this.tipo_documento)) throw new BadRequestException('El tipo de documento no es valido');
+    if (!this.numero_documento) throw new BadRequestException('El numero de documento es obligatorio');
+    if (!this.nombre) throw new BadRequestException('El nombre es obligatorio');
+    if (!this.apellidos) throw new BadRequestException('Los apellidos son obligatorios');
   }
 }

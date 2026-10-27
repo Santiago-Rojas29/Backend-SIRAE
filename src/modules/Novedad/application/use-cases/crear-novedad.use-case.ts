@@ -32,6 +32,7 @@ export class CrearNovedadUseCase {
       data.verificacion,
       data.observaciones,
     );
+    entity.validar();
     return this.repo.crear(entity);
   }
 }

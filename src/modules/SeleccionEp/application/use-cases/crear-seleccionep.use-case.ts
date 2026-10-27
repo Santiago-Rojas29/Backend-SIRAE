@@ -12,7 +12,7 @@ export class CrearSeleccionEpUseCase {
   async execute(data: {
     matricula_id_FK: string;
     alternativa_id_FK: string;
-    alternativa_original_id_FK: string;
+    alternativa_original_id_FK?: string;
     estado_proceso: string;
     fecha_respuesta?: Date;
     verificacion_ficha?: string;
@@ -27,7 +27,7 @@ export class CrearSeleccionEpUseCase {
       '',
       data.matricula_id_FK,
       data.alternativa_id_FK,
-      data.alternativa_original_id_FK,
+      data.alternativa_original_id_FK ?? null,
       data.estado_proceso,
       data.fecha_respuesta,
       data.verificacion_ficha,
@@ -38,6 +38,7 @@ export class CrearSeleccionEpUseCase {
       data.fecha_migracion_sgva,
       data.observaciones,
     );
+    entity.validar();
     return this.repo.crear(entity);
   }
 }

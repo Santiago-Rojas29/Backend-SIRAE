@@ -38,6 +38,7 @@ export class CrearAprendizUseCase {
       data.municipio,
       data.discapacidad,
     );
+    entity.validar();
     return this.repo.crear(entity);
   }
 }
